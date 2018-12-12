@@ -3,4 +3,4 @@
  */
 
 // 需要执行的文件
-import './lesson/let_and_const_command.js';
+import './01_let_and_const_command.js';
