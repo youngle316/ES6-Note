@@ -7,4 +7,4 @@
 
 ### 笔记
 
-+ [let和const命令]()
++ [let和const命令](https://github.com/youngle316/ES6-Note/blob/master/src/note/01_let%E5%92%8Cconst%E5%91%BD%E4%BB%A4.md)
