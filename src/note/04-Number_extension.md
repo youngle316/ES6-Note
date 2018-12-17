@@ -94,5 +94,182 @@ console.log(Number.isInteger(true)); // false
 
 ```js
 console.log(Number.EPSILON);    // 2.220446049250313e-16
+// 限制20位
+console.log(Number.EPSILON.toFixed(20));    // 0.00000000000000022204
 ```
+
+#### 5.1 作用
+
+目的是为了浮点数计算时设置一个误差范围。因为浮点数计算是不准确的。
+
+如果这个误差小于 `Number.EPSILON` ，就认为得到了正确的答案。
+
+它的实质就是一个可以接受的误差范围。
+
+```js
+// 为浮点数运算误差检查
+function withInErrorMargin(left, right) {
+    return Math.abs(right - left) < Number.EPSILON;
+}
+
+console.log(withInErrorMargin(0.1 + 0.2, 0.3));  // true
+console.log(withInErrorMargin(0.2 + 0.2, 0.3));  // false
+```
+
+### 6. 安全整数和Number.isSafeInteger()
+
+JavaScript能够准确表示的**整数**范围是**负二的五十三次方~二的五十三次方**（不包含两个端点）。超过这个范围就无法精确表示。
+
+```js
+console.log(Math.pow(2, 53));   //  9007199254740992
+console.log(9007199254740993);  // 9007199254740992
+```
+
+在ES6中引入了`Number.MAX_SAFE_INTEGER`和`Number.MIN_SAFE_INTEGER`两个常量用来表示这个范围的上下线。
+
+```js
+console.log(Number.MAX_SAFE_INTEGER === Math.pow(2, 53) - 1); //true
+console.log(Number.MAX_SAFE_INTEGER === 9007199254740991);  // true
+console.log(Number.MAX_SAFE_INTEGER === -Number.MIN_SAFE_INTEGER);  // true
+console.log(Number.MIN_SAFE_INTEGER === -9007199254740991); // true
+```
+
+上面的代码中，可以看到JavaScript能够精确表示的极限。
+
+
+
+`Number.isSafeInteger()`则是用来判断一个**整数**是否落在这个范围之内。
+
+```js
+// Number.isSafeInteger()
+console.log(Number.isSafeInteger('a')); // false
+console.log(Number.isSafeInteger(null)); // false
+console.log(Number.isSafeInteger(NaN)); // false
+console.log(Number.isSafeInteger(Infinity)); // false
+console.log(Number.isSafeInteger(-Infinity)); // false
+
+console.log(Number.isSafeInteger(-3)); // true
+console.log(Number.isSafeInteger(3)); // true
+console.log(Number.isSafeInteger(1.2)); // false
+console.log(Number.isSafeInteger(9007199254740992)); // false
+console.log(Number.isSafeInteger(9007199254740990)); // true
+
+console.log(Number.isSafeInteger(Number.MIN_SAFE_INTEGER)); // true
+console.log(Number.isSafeInteger(Number.MAX_SAFE_INTEGER)); // true
+console.log(Number.isSafeInteger(Number.MAX_SAFE_INTEGER + 1)); // false
+console.log(Number.isSafeInteger(Number.MIN_SAFE_INTEGER - 1)); // false
+```
+
+### 7. Math对象的扩展
+
+ES6在Math对象上新增了17个方法，都是静态方法，只能在Math对象上调用。
+
+#### 7.1 Math.trunc()
+
+> 用于取出一个数的小数部分，返回整数部分
+
+```js
+console.log(Math.trunc(3.16));  // 3
+console.log(Math.trunc(3.61));  // 3
+console.log(Math.trunc(-3.61));  // -3
+console.log(Math.trunc(-3.16));  // -3
+```
+
+对于非数值，`Math.trunc`内部使用Number方法先将其转换为数值。
+
+```js
+console.log(Math.trunc('123.456')); //123
+```
+
+对于空值和无法截取整数的值，返回`NaN`。
+
+```js
+console.log(Math.trunc(NaN));   //NaN
+console.log(Math.trunc('abc'));   //NaN
+console.log(Math.trunc());   //NaN
+```
+
+#### 7.2 Math.sign()
+
+> 用于判断一个数是正数，负数，还是零。
+
+```js
+// 正数返回 1
+console.log(Math.sign(3));  // 1
+// 负数返回 -1
+console.log(Math.sign(-3)); // -1
+// 正零返回 0
+console.log(Math.sign(0));  // 0
+// 负零返回 -0
+console.log(Math.sign(-0)); // -0
+```
+
+对于非数值，先将其转换为数值。如果仍为非数值，则返回`NaN`。
+
+```js
+console.log(Math.sign('3'));    // 1
+console.log(Math.sign(NaN));    // NaN
+console.log(Math.sign());   // NaN
+```
+
+#### 7.3 Math.cbrt()
+
+> 用于计算一个数的立方根 （Cube root）
+
+```js
+console.log(Math.cbrt(8));  // 2
+console.log(Math.cbrt(1));  // 1
+console.log(Math.cbrt(0));  // 0
+console.log(Math.cbrt(-1));  // -1
+```
+
+对于非数值，先将其转换为数值。如果仍为非数值，则返回`NaN`。
+
+```js
+console.log(Math.cbrt('8')); // 2
+console.log(Math.cbrt(NaN)); // NaN
+console.log(Math.cbrt()); // NaN
+```
+
+#### 7.4 Math.clz32()
+
+JavaScript的整数使用32位2进制形式表示，Math.clz32()方法返回一个数的32位无符号整数形式有多少个前导0。
+
+#### 7.5 Math.fround()
+
+> 返回一个数的单精度浮点数形式
+
+#### 7.6 Math.hypot()
+
+> 返回所有参数的平方和的平方根
+
+```js
+console.log(Math.hypot(-3));    // 3
+console.log(Math.hypot(3, 4));   // 5
+console.log(Math.hypot(2, 3));   // 3.6055512754639896
+console.log(Math.hypot());   // 0
+console.log(Math.hypot('3', '4'));   // 5
+```
+
+#### 7.7 指数运算符
+
+ES2016新增了一个指数运算符（**）
+
+```js
+console.log(2 ** 2);    // 4
+console.log(2 ** 3);    // 8
+```
+
+指数运算符可以和等号连接，成为一个新的赋值运算符（**=）
+
+```js
+let a = 2;
+console.log(a **= 2);   // 4  相当于 a = a * a
+let b = 2;
+console.log(b **= 3);   // 8 相当于 b = b * b * b
+```
+
+在V8引擎中，指数运算符与Math.pow的实现不相同，对于特别大的运算结果。两者会有细微的差别。
+
+
 
