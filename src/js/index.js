@@ -5,4 +5,4 @@
 /**
  *  需要执行的文件
  */
-import './06_function_extension.js';
+import './07_object_extension.js';
