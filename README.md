@@ -16,3 +16,4 @@
 + [数组的扩展](https://github.com/youngle316/ES6-Note/blob/master/src/note/05_Array_extension.md)
 + [函数的扩展](https://github.com/youngle316/ES6-Note/blob/master/src/note/06_function_extension.md)
 + [对象的扩展](https://github.com/youngle316/ES6-Note/blob/master/src/note/07_object_extension.md)
++ [Symbol](https://github.com/youngle316/ES6-Note/blob/master/src/note/08_Symbol.md)
