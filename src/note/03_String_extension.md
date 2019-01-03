@@ -1,11 +1,11 @@
-## 字符串的扩展
+# 字符串的扩展
 
-### 1. 字符的Unicode表示法
+## 1. 字符的Unicode表示法
 
 JavaScript允许用`\uxxxx`来表示一个字符，其中xxxx表示字符串的Unicode码。如：
 
 ```js
-console.log('\u0061');	// a
+console.log('\u0061');// a
 ```
 
 但是，这种表示法只限于码点在`\u0000~\uFFFF`之间。超过这个范围的字符，必须使用两个双字节的形式表示。
@@ -15,10 +15,10 @@ console.log('\u0061');	// a
 在**ES6**中有了一点改变。只要将码点放入大括号，就能正确解读该字符。
 
 ```js
-console.log(`\u{20BB7}`);	// 𠮷
+console.log(`\u{20BB7}`);// 𠮷
 ```
 
-### 2 codePointAt()
+## 2. codePointAt()
 
 在JavaScript内部，字符以UTF-16的格式存储，每个字符固定为两个子节。对于需要4个子节存储的字符（Unicode码点大于0xFFFF的字符），JavaScript会认为他们是2个字符。
 
@@ -60,7 +60,7 @@ console.log(s.codePointAt(1).toString(16));  // dfb7
 console.log(s.codePointAt(2).toString(16));  // 61
 ```
 
-#### 用途
+### 用途
 
 `codePointAt()`方法是测试一个字符是由2个字节还是4个字节组成的最简单方法
 
@@ -72,7 +72,7 @@ console.log(is32Bit('𠮷')); // true
 console.log(is32Bit('a')); // false
 ```
 
-### 3. 字符串的遍历器接口
+## 3. 字符串的遍历器接口
 
 ES6为字符串添加了遍历器接口，使得字符串可以由for...of循环遍历。
 
@@ -91,7 +91,7 @@ for (let i of s) {
 }
 ```
 
-### 4. includes(),startsWith(),endsWidth()
+## 4. includes(),startsWith(),endsWidth()
 
 在传统上，JavaScript中只有`indexof`方法可用来确定一个字符串是否包含在另一个字符串中。ES6又提供了三种方式：
 
@@ -107,7 +107,7 @@ console.log(str.startsWith('h'));   // true
 console.log(str.endsWith('hello')); // false
 ```
 
-### 5. repeat()
+## 5. repeat()
 
 repeat()方法返回一个新字符串，表示将原字符串重复n次。
 
@@ -134,7 +134,7 @@ console.log('hello'.repeat('3'));   // hellohellohello
 console.log('hello'.repeat('he'));  // ''
 ```
 
-### 6. padStart(),padEnd()
+## 6. padStart(),padEnd()
 
 ES2017引入了字符串补全长度的功能。如果某个字符串不够指定长度，会在头部或尾部补全。
 
@@ -169,7 +169,7 @@ console.log('12'.padStart(10, 'YYYY-MM-DD'));    // YYYY-MM-12
 console.log('09-12'.padStart(10, 'YYYY-MM-DD'));    // YYYY-09-12
 ```
 
-### 7. 模板字符串
+## 7. 模板字符串
 
 模板字符串是增强版的字符串，用反引号（`）来标识。它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中定义变量。
 
@@ -186,7 +186,7 @@ let name = 'Bob', time = 'today';
 console.log(`Hello ${name}, how are you ${time}?`); // Hello Bob, how are you today?
 ```
 
-#### 模板字符串的用法
+### 模板字符串的用法
 
 ```js
 // 7.1 大括号内可以放入任意的JavaScript表达式，可以进行运算，以及引用对象属性
@@ -205,4 +205,3 @@ function fn() {
 }
 console.log(`${fn()}`); // hello world
 ```
-

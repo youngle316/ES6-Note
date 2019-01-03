@@ -1,6 +1,6 @@
-### 数值的扩展
+# 数值的扩展
 
-### 1. 二进制和八进制表示法
+## 1. 二进制和八进制表示法
 
 ES6提供了二进制和八进制新的的表示法，
 
@@ -9,23 +9,23 @@ ES6提供了二进制和八进制新的的表示法，
 
 ```js
 // 二进制 0b(或0B)
-console.log(0b111110111);	// 503
+console.log(0b111110111);// 503
 // 八进制 0o(或0O)
-console.log(0o767);	// 503
+console.log(0o767);// 503
 ```
 
 将使用0b和0x前缀的字符串数值转换为十进制数值，前面加Number
 
 ```js
-console.log(Number('0b111'));	// 7
-console.log(Number('0o10'));	// 8
+console.log(Number('0b111'));// 7
+console.log(Number('0o10'));// 8
 ```
 
-### 2. Number.isFinite() 和 Number.isNaN()
+## 2. Number.isFinite() 和 Number.isNaN()
 
 ES6在新的对象上新提供了`Number.isFinite()`和`Number.isNaN()`两个方法。
 
-#### 2.1 Number.isFinite()
+### 2.1 Number.isFinite()
 
 用来检查一个数值是否为有限的(Finite)
 
@@ -40,7 +40,7 @@ console.log(Number.isFinite('15'));   // false
 console.log(Number.isFinite(true));   // false
 ```
 
-#### 2.2 Number.isNaN()
+### 2.2 Number.isNaN()
 
 用来检查一个数值是否为NaN
 
@@ -54,11 +54,11 @@ console.log('true' / 0);    // true
 console.log('true' / 'true');   // true
 ```
 
-#### 2.3 新方法与传统的全局方法的区别
+### 2.3 新方法与传统的全局方法的区别
 
 传统方法先调用`Number()`将非数值转为数值，在进行判断。而新方法`Number.isFinite()`只对数值有效，对于非数值一律返回`false`。`Number.isNaN()`只能对于`NaN`才返回true，非`NaN`一律返回false。
 
-### 3. Number.parseInt() 和 Number.parseFloat()
+## 3. Number.parseInt() 和 Number.parseFloat()
 
 ES6将`Number.parseInt()` 和 `Number.parseFloat()`移植到了Number对象上，用法，结果不变。
 
@@ -72,11 +72,11 @@ console.log(Number.parseInt('12.34'));  // 12
 console.log(Number.parseFloat('123.453'));  // 123.453
 ```
 
-#### 3.1 优点
+### 3.1 优点
 
 逐渐减少全局性方法，使得语言逐步模块化。
 
-### 4. Number.isInteger()
+## 4. Number.isInteger()
 
 用来判断一个数值是否是一个整数。在JavaScript中，整数和浮点数是相同的存储方式。所以5和5.0被视为同一个数。
 
@@ -88,7 +88,7 @@ console.log(Number.isInteger('15')); // false
 console.log(Number.isInteger(true)); // false
 ```
 
-### 5. Number.EPSILON()
+## 5. Number.EPSILON()
 
 这是一个极小的常量。实质是一个可以接受的误差范围。
 
@@ -98,7 +98,7 @@ console.log(Number.EPSILON);    // 2.220446049250313e-16
 console.log(Number.EPSILON.toFixed(20));    // 0.00000000000000022204
 ```
 
-#### 5.1 作用
+### 5.1 作用
 
 目的是为了浮点数计算时设置一个误差范围。因为浮点数计算是不准确的。
 
@@ -116,7 +116,7 @@ console.log(withInErrorMargin(0.1 + 0.2, 0.3));  // true
 console.log(withInErrorMargin(0.2 + 0.2, 0.3));  // false
 ```
 
-### 6. 安全整数和Number.isSafeInteger()
+## 6. 安全整数和Number.isSafeInteger()
 
 JavaScript能够准确表示的**整数**范围是**负二的五十三次方~二的五十三次方**（不包含两个端点）。超过这个范围就无法精确表示。
 
@@ -135,8 +135,6 @@ console.log(Number.MIN_SAFE_INTEGER === -9007199254740991); // true
 ```
 
 上面的代码中，可以看到JavaScript能够精确表示的极限。
-
-
 
 `Number.isSafeInteger()`则是用来判断一个**整数**是否落在这个范围之内。
 
@@ -160,11 +158,11 @@ console.log(Number.isSafeInteger(Number.MAX_SAFE_INTEGER + 1)); // false
 console.log(Number.isSafeInteger(Number.MIN_SAFE_INTEGER - 1)); // false
 ```
 
-### 7. Math对象的扩展
+## 7. Math对象的扩展
 
 ES6在Math对象上新增了17个方法，都是静态方法，只能在Math对象上调用。
 
-#### 7.1 Math.trunc()
+### 7.1 Math.trunc()
 
 > 用于取出一个数的小数部分，返回整数部分
 
@@ -189,7 +187,7 @@ console.log(Math.trunc('abc'));   //NaN
 console.log(Math.trunc());   //NaN
 ```
 
-#### 7.2 Math.sign()
+### 7.2 Math.sign()
 
 > 用于判断一个数是正数，负数，还是零。
 
@@ -212,7 +210,7 @@ console.log(Math.sign(NaN));    // NaN
 console.log(Math.sign());   // NaN
 ```
 
-#### 7.3 Math.cbrt()
+### 7.3 Math.cbrt()
 
 > 用于计算一个数的立方根 （Cube root）
 
@@ -231,15 +229,15 @@ console.log(Math.cbrt(NaN)); // NaN
 console.log(Math.cbrt()); // NaN
 ```
 
-#### 7.4 Math.clz32()
+7.4 Math.clz32()
 
 JavaScript的整数使用32位2进制形式表示，Math.clz32()方法返回一个数的32位无符号整数形式有多少个前导0。
 
-#### 7.5 Math.fround()
+### 7.5 Math.fround()
 
 > 返回一个数的单精度浮点数形式
 
-#### 7.6 Math.hypot()
+### 7.6 Math.hypot()
 
 > 返回所有参数的平方和的平方根
 
@@ -251,7 +249,7 @@ console.log(Math.hypot());   // 0
 console.log(Math.hypot('3', '4'));   // 5
 ```
 
-#### 7.7 指数运算符
+### 7.7 指数运算符
 
 ES2016新增了一个指数运算符（**）
 
@@ -270,6 +268,3 @@ console.log(b **= 3);   // 8 相当于 b = b * b * b
 ```
 
 在V8引擎中，指数运算符与Math.pow的实现不相同，对于特别大的运算结果。两者会有细微的差别。
-
-
-
