@@ -17,3 +17,5 @@
 + [函数的扩展](https://github.com/youngle316/ES6-Note/blob/master/src/note/06_function_extension.md)
 + [对象的扩展](https://github.com/youngle316/ES6-Note/blob/master/src/note/07_object_extension.md)
 + [Symbol](https://github.com/youngle316/ES6-Note/blob/master/src/note/08_Symbol.md)
++ [Set和Map数据结构](https://github.com/youngle316/ES6-Note/blob/master/src/note/09_SetAndMap.md)
+
