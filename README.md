@@ -19,4 +19,4 @@
 + [08-Symbol](https://github.com/youngle316/ES6-Note/blob/master/src/note/08_Symbol.md)
 + [09-Set和Map数据结构](https://github.com/youngle316/ES6-Note/blob/master/src/note/09_SetAndMap.md)
 + [10-Class的基本语法](https://github.com/youngle316/ES6-Note/blob/master/src/note/10_class_basic_usage.md)
-
++ [11-extends继承](https://github.com/youngle316/ES6-Note/blob/master/src/note/11_extends.md)

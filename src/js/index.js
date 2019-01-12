@@ -5,4 +5,4 @@
 /**
  *  需要执行的文件
  */
-import './10_class_basic_usage.js';
+import './11_extends.js';
