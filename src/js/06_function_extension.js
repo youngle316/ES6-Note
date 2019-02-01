@@ -19,13 +19,13 @@
   }
   // ES6的写法
   {
-    function test(x, y = 'world') {
+    function test1(x, y = 'world') {
       console.log(x, y);
     }
 
-    test('hello'); // hello world
-    test('hello', 'China'); // hello China
-    test('hello', ''); // hello
+    test1('hello'); // hello world
+    test1('hello', 'China'); // hello China
+    test1('hello', ''); // hello
   }
 } {
   // 1.2 length属性

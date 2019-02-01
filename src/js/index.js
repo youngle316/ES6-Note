@@ -5,4 +5,4 @@
 /**
  *  需要执行的文件
  */
-import './11_extends.js';
+import './12_Promise.js';
