@@ -1,6 +1,6 @@
-# let
+# 1. let
 
-## 1. 基本用法
+## 1.1 基本用法
 
 let用于定义变量，但是变量只能在let命令所在的代码块中有效
 
@@ -13,7 +13,7 @@ for(let i = 1; i<3; i++){
 console.log(i);// ReferenceError: i is not defined
 ```
 
-## 2. 严格模式
+## 1.2 严格模式
 
 严格模式下，变量未声明，不能引用，某则会报引用错误。
 
@@ -31,7 +31,7 @@ console.log(b);// ReferenceError: b is not defined
 let b = 10;
 ```
 
-## 3. 不能重复声明
+## 1.3 不能重复声明
 
 不能再同一块作用域下，使用let声明同一变量，不然会报错。
 
@@ -56,11 +56,11 @@ var a = 2;
 // 用var声明也不会报错，
 ```
 
-# Const
+# 2. Const
 
 const用来定义常量，常量就是不允许去改变的值。用大写字母、下划线和$符号来表示。
 
-## 1. const不允许被修改
+## 2.1 const不允许被修改
 
 例：
 
@@ -71,7 +71,7 @@ console.log(PI);
 // 报错，"PI" is read-only;
 ```
 
-## 2. const声明常量时，必须赋值
+## 2.2 const声明常量时，必须赋值
 
 例：
 
@@ -82,7 +82,7 @@ console.log(PI);
 // 报错，Unexpected token
 ```
 
-## 3. const声明对象
+## 2.3 const声明对象
 
 例：
 
